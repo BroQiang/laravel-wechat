@@ -15,9 +15,10 @@ Auth::routes();
 
 Route::group(['prefix'=>'backed','namespace'=>'Backeds','middleware'=>'auth'],function(){
 	Route::get('/', 'IndexController@index');
+	Route::get('menu','MenusController@all');
 });
 
-Route::group(['prefix'=>'wxapi','namespace'=>'Wechat'],function(){
+Route::group(['prefix'=>'wxapi','namespace'=>'Wechats'],function(){
 	Route::any('/', 'IndexController@index');
 	Route::any('/serve', 'ServesController@index');
 });
