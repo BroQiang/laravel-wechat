@@ -10,7 +10,7 @@ class ServesController extends Controller
 {
     public function index(Application $wechat)
     {
-    	Log::info($wechat);
+    	Log::info($wechat->toArray());
         return $wechat->server->serve()->send();
     }
 }
