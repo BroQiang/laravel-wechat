@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Wechat;
 
 use App\Http\Controllers\Controller;
 use EasyWeChat\Foundation\Application;
+use Illuminate\Support\Facades\Log;
 
 class ServesController extends Controller
 {
