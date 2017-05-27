@@ -1,6 +1,11 @@
 <?php
 namespace App\Wechats;
 
+use App\Wechats\events\ClickEvent;
+use App\Wechats\events\ScanEvent;
+use App\Wechats\events\SubscribeEvent;
+use App\Wechats\events\UnsubscribeEvent;
+
 class Event
 {
     protected $message;
