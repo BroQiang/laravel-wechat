@@ -19,7 +19,6 @@ class Messages
         
         if ($message->MsgType == 'text') {
             $text = new Text(['content' => '你好，测试信息']);
-            Log::log($text->toArray());
             return $text;
         }
     }
