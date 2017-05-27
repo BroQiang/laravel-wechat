@@ -1,10 +1,10 @@
 <?php
 namespace App\Wechats;
 
-use App\Wechats\events\ClickEvent;
-use App\Wechats\events\ScanEvent;
-use App\Wechats\events\SubscribeEvent;
-use App\Wechats\events\UnsubscribeEvent;
+use App\Wechats\Events\ClickEvent;
+use App\Wechats\Events\ScanEvent;
+use App\Wechats\Events\SubscribeEvent;
+use App\Wechats\Events\UnsubscribeEvent;
 
 class Event
 {

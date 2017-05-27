@@ -1,7 +1,7 @@
 <?php
-namespace App\Wechats\events;
+namespace App\Wechats\Events;
 
-class UnsubscribeEvent
+class ScanEvent
 {
     protected $message;
 
@@ -10,7 +10,7 @@ class UnsubscribeEvent
         $this->message = $message;
     }
 
-    public function unsubscribeHandler()
+    public function scanHandler()
     {
     	
     }

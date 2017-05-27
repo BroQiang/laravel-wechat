@@ -1,5 +1,5 @@
 <?php
-namespace App\Wechats\events;
+namespace App\Wechats\Events;
 
 class SubscribeEvent
 {
