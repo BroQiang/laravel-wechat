@@ -13,7 +13,7 @@ class Messages
         $this->text = text;
     }
 
-    public function messageHandler($message)
+    public static function messageHandler($message)
     {
         
     	return '你好，测试信息';
