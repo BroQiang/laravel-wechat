@@ -2,11 +2,12 @@
 namespace App\Wechats\Activities;
 
 use App\Models\Poster;
-use App\Wechats\Users;
+use Carbon\Carbon;
 
 class Posters
 {
     public $message;
+    private $poster;
 
     public function __construct($message = null)
     {
@@ -19,8 +20,8 @@ class Posters
 
     public function posterHandler()
     {
-        // 获取海报信息
-        if (!$poster = $this->getPosterByKey($this->message->EventKey)) {
+        // 海报信息处理，获取到有效的海报信息，就发送海报
+        if (!$this->posterProcess($this->message->EventKey)) {
             return null;
         }
 
@@ -30,13 +31,35 @@ class Posters
         return $poster;
     }
 
+    /**
+     * 海报处理
+     *
+     * @param  [type] $key [description]
+     *
+     * @return [type] [description]
+     */
+    protected function posterProcess($key)
+    {
+        if (!$this->getPosterByKey($key)) {
+            return false;
+        }
+        // 如果活动已经结束，发送活动结束的消息，并返回false
+        if (Carbon::now()->gt(Carbon::parse($this->poster->end_time))) {
+            $message = new Text(['content' => $this->poster->end_message]);
+            app('wechat')->staff->message($message)->to($this->message->FromUserName)->send();
+            return false;
+        }
+    }
+
     protected function getPosterByKey($key)
     {
         // 处理key，最后一个字段是主键
         $tempArray = explode('_', $key);
 
         if (is_numeric($id = end($tempArray))) {
-            return Poster::find($id);
+            $this->poster = Poster::find($id);
+            return true;
         }
+        return false;
     }
 }
