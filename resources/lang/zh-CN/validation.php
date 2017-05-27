@@ -11,7 +11,7 @@ return [
     | the validator class. Some of these rules have multiple versions such
     | such as the size rules. Feel free to tweak each of these messages.
     |
-    */
+     */
 
     'accepted'             => ':attribute 必须接受。',
     'active_url'           => ':attribute 不是一个有效的网址。',
@@ -97,7 +97,7 @@ return [
     | convention 'attribute.rule' to name the lines. This makes it quick to
     | specify a specific custom language line for a given attribute rule.
     |
-    */
+     */
 
     'custom'               => [
         'attribute-name' => [
@@ -114,7 +114,7 @@ return [
     | with something more reader friendly such as E-Mail Address instead
     | of 'email'. This simply helps us make messages a little cleaner.
     |
-    */
+     */
 
     'attributes'           => [
         'name'                  => '名称',
@@ -146,6 +146,17 @@ return [
         'time'                  => '时间',
         'available'             => '可用的',
         'size'                  => '大小',
+
+        // 下面是自定义的内容
+        'action'                => '动作',
+        'type'                  => '类型',
+        'get_message'           => '获取消息',
+        'subscribe_message'     => '扫码消息',
+        'success_message'       => '完成消息',
+        'number'                => '数量',
+        'is_send'               => '是否发送',
+        'end_message'           => '结束消息',
+        'end_time'              => '结束时间',
     ],
 
 ];

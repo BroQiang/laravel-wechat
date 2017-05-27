@@ -20,3 +20,7 @@ Vue.component('example', require('./components/Example.vue'));
 const app = new Vue({
     el: '#app'
 });
+
+require('../../../node_modules/jquery-datetimepicker/build/jquery.datetimepicker.full');
+
+require('./bro/common');

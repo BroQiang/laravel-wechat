@@ -8,15 +8,15 @@ use Illuminate\Support\Facades\Log;
 
 class ServesController extends Controller
 {
-	private $wechat;
+	private $server;
 
-	public function __construct(Application $wechat)
+	public function __construct(Application $app)
 	{
-		$this->wechat = $wechat;
+		$this->server = $app->server;
 	}
 
     public function index()
     {
-        return $this->wechat->server->serve()->send();
+        return $this->server->serve()->send();
     }
 }

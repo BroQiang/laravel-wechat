@@ -1,6 +1,8 @@
 
 // Fonts
-@import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// @import url(https://fonts.googleapis.com/css?family=Raleway:300,400,600);
+// 将google字体替换成国内的源
+// @import url(https://fonts.css.network/css?family=Raleway:300,400,600);
 
 // Variables
 @import "variables";
@@ -8,6 +10,6 @@
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
-@import "bro/base.scss"
+@import "bro/base.scss";
 
 

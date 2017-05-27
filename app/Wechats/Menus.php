@@ -5,16 +5,21 @@ use EasyWeChat\Foundation\Application;
 
 class Menus
 {
-    private $app;
+    private $menu;
 
     public function __construct(Application $app)
     {
-        $this->app = $app;
+        $this->menu = $app->menu;
     }
 
-    public function all()
+    public function current()
     {
-    	return $this->app->menu->all();
+        return $this->menu->current();
+    }
+
+    public function publish($buttons)
+    {
+        return $this->menu->add($buttons);
     }
 
 }
