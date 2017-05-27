@@ -26,7 +26,7 @@ class ClickEvent
         $len = strlen($keyword);
 
         if(strncmp($keyword,substr($this->message->EventKey, 0,$len),$len) == 0) {
-            new Text(['content' => '你点击了菜单']);
+            return new Text(['content' => '你点击了菜单']);
         }
     }
 }
