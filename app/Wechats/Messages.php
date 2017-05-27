@@ -2,6 +2,7 @@
 namespace App\Wechats;
 
 use EasyWeChat\Message\Text;
+use Illuminate\Support\Facades\Log;
 
 class Messages
 {
