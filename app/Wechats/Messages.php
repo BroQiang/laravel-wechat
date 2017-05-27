@@ -9,7 +9,7 @@ class Messages
 
         switch ($message->MsgType) {
             case 'event':
-                return (new Event())->eventHandler($message);
+                return (new Event($message))->eventHandler();
                 break;
             case 'text':
                 return '谢谢你的留言，我还太小，没学会回复呢……';
