@@ -17,6 +17,7 @@ class ServesController extends Controller
 
     public function index()
     {
+    	$this->server->setMessageHandler(['App\Wechats\Messages','messageHandler']);
         return $this->server->serve()->send();
     }
 }
