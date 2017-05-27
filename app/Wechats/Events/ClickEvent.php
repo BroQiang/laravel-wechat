@@ -2,7 +2,7 @@
 namespace App\Wechats\Events;
 
 use App\Wechats\Activities\Posters;
-use EasyWeChat\Message\Text;
+use EasyWeChat\Core\Exceptions\HttpException;
 
 class ClickEvent
 {
@@ -22,11 +22,13 @@ class ClickEvent
 
     public function clickHandler()
     {
+
+        throw new HttpException('ucuo1ch');
         // 暂时只有海报活动一个点击事件，时间又紧，就先写死了，等有空再处理
         $keyword = 'activity_push_poster';
-        $len = strlen($keyword);
+        $len     = strlen($keyword);
 
-        if(strncmp($keyword,substr($this->message->EventKey, 0,$len),$len) == 0) {
+        if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) == 0) {
             return (new Posters($this->message))->posterHandler();
         }
     }

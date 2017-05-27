@@ -1,15 +1,13 @@
 <?php
 namespace App\Wechats;
 
-use EasyWeChat\Foundation\Application;
-
 class Menus
 {
     private $menu;
 
-    public function __construct(Application $app)
+    public function __construct()
     {
-        $this->menu = $app->menu;
+        $this->menu = app('wechat')->->menu;
     }
 
     public function current()
