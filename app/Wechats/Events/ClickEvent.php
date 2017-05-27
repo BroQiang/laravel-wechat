@@ -2,7 +2,6 @@
 namespace App\Wechats\Events;
 
 use App\Wechats\Activities\Posters;
-use EasyWeChat\Core\Exceptions\FaultException;
 
 class ClickEvent
 {
@@ -22,8 +21,6 @@ class ClickEvent
 
     public function clickHandler()
     {
-
-        throw new FaultException('ucuo1ch');
         // 暂时只有海报活动一个点击事件，时间又紧，就先写死了，等有空再处理
         $keyword = 'activity_push_poster';
         $len     = strlen($keyword);
