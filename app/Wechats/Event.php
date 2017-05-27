@@ -10,7 +10,7 @@ class Event
         $this->message = $message;
     }
 
-    public function eventHandler($message)
+    public function eventHandler()
     {
         switch ($message->Event) {
             case 'subscribe': // 关注
