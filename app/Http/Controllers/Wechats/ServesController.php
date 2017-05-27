@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Wechats;
 
 use App\Http\Controllers\Controller;
+use App\Wechats\Messages;
 use EasyWeChat\Foundation\Application;
 use Illuminate\Support\Facades\Log;
 
@@ -17,7 +18,7 @@ class ServesController extends Controller
 
     public function index()
     {
-    	$this->server->setMessageHandler(['App\Wechats\Messages','messageHandler']);
+    	$this->server->setMessageHandler([Messages::class,'messageHandler']);
         return $this->server->serve()->send();
     }
 }
