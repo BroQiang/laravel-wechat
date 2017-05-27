@@ -1,6 +1,8 @@
 <?php
 namespace App\Wechats\Events;
 
+use EasyWeChat\Message\Text;
+
 class ClickEvent
 {
     protected $message;
