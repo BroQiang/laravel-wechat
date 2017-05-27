@@ -3,6 +3,7 @@ namespace App\Wechats\Activities;
 
 use App\Models\Poster;
 use Carbon\Carbon;
+use EasyWeChat\Message\Text;
 
 class Posters
 {
