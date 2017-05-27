@@ -18,7 +18,7 @@ class ServesController extends Controller
 
     public function index()
     {
-    	$this->server->setMessageHandler([Messages::class,'messageHandler']);
+    	$this->server->setMessageHandler(Messages::messageHandler);
         return $this->server->serve()->send();
     }
 }
