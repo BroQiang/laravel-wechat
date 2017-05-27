@@ -1,6 +1,8 @@
 <?php
 namespace App\Wechats\Activities;
 
+use App\Models\Poster;
+
 class Posters
 {
     private $message;
@@ -15,16 +17,21 @@ class Posters
         if (!$poster = $this->getPosterByKey($this->message->EventKey)) {
             return null;
         }
+
+        return $poster->name;
     }
 
     protected function getPosterByKey($key)
     {
-        
-    	return $key;
-        // 处理key，最后一个字段是主键
-        $arr = explode('_', $key);
-        $id = end($arr);
 
-        return $id;
+        return $key;
+        // 处理key，最后一个字段是主键
+        $tempArray = explode('_', $key);
+
+        if (is_numeric($id = end($tempArray))) {
+            return Poster::find($id);
+        }
+
+        return false;
     }
 }
