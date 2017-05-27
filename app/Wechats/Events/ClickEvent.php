@@ -23,7 +23,7 @@ class ClickEvent
         $keyword = 'activity_push_poster';
         $len = strlen($keyword);
 
-        if(strncmp($keyword,substr($this->message->EventKey, 0,$len)) == 0) {
+        if(strncmp($keyword,substr($this->message->EventKey, 0,$len),$len) == 0) {
             new Text(['content' => '你点击了菜单']);
         }
     }
