@@ -12,7 +12,7 @@ class Event
 
     public function eventHandler()
     {
-        switch ($message->Event) {
+        switch ($this->message->Event) {
             case 'subscribe': // 关注
                 return (new SubscribeEvent($this->message))->subscribeHandler();
             case 'unsubscribe': //取消关注
