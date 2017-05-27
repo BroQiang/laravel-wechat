@@ -19,8 +19,11 @@ class Posters
 
     protected function getPosterByKey($key)
     {
+        
+    	return $key;
         // 处理key，最后一个字段是主键
-        $id = end(explode('_', $key));
+        $arr = explode('_', $key);
+        $id = end($arr);
 
         return $id;
     }
