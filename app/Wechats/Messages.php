@@ -1,24 +1,15 @@
 <?php
 namespace App\Wechats;
 
-use EasyWeChat\Message\Text;
-
 class Messages
 {
-
-    private $text;
-
-    public function __construct(Text $text)
-    {
-        $this->text = text;
-    }
 
     public static function messageHandler($message)
     {
 
         switch ($message->MsgType) {
             case 'event':
-                return '收到事件消息';
+                return (new Event())->eventHandler($message);
                 break;
             case 'text':
                 return '谢谢你的留言，我还太小，没学会回复呢……';
