@@ -1,6 +1,7 @@
 <?php
 namespace App\Wechats\Events;
 
+use App\Wechats\Activities\Posters;
 use EasyWeChat\Message\Text;
 
 class ClickEvent
