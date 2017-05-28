@@ -56,12 +56,12 @@ class PosterImage
 
     protected function writeFirstFile()
     {
-        Storage::put(storage_path('temp' . $this->poster->id . '_' . $this->message->FromUserName), time());
+        Storage::put(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName), time());
     }
 
     protected function checkFirstFile()
     {
-        return Storage::get(storage_path('temp' . $this->poster->id . '_' . $this->message->FromUserName));
+        return Storage::get(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
     }
 
     protected function mergeImages()
