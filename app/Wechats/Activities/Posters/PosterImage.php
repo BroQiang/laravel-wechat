@@ -58,17 +58,17 @@ class PosterImage
 
     protected function writeFirstFile()
     {
-        Storage::put(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName), time());
+        Storage::put('temp/' . $this->poster->id . '_' . $this->message->FromUserName, time());
     }
 
     protected function checkFirstFile()
     {
-        return Storage::exists(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
+        return Storage::exists('temp/' . $this->poster->id . '_' . $this->message->FromUserName);
     }
 
     protected function deleteFirstFile()
     {
-        Storage::delete(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
+        Storage::delete('temp/' . $this->poster->id . '_' . $this->message->FromUserName);
     }
 
     protected function mergeImages()
