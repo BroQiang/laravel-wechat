@@ -1,6 +1,7 @@
 <?php
 namespace App\Wechats\Activities\Posters;
 
+use App\Models\Poster;
 use App\Models\PosterShareRecord;
 use EasyWeChat\Message\Text;
 
@@ -13,8 +14,8 @@ class PostMessage
 
     public function __construct(Poster $poster, $message = null)
     {
-        $this->message = $message;
         $this->poster  = $poster;
+        $this->message = $message;
     }
 
     public function handler($shareUserOpenid)
