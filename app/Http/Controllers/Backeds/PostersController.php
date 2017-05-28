@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backeds;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostersRequest;
 use App\Models\Poster;
+use App\Repositories\CommonRepository;
 use App\Repositories\PosterRepository;
 use App\Uploads\Uploads;
 use App\Uploads\UploadsException;
@@ -13,6 +14,7 @@ use Illuminate\Support\Facades\Storage;
 
 class PostersController extends Controller
 {
+    use CommonRepository;
     /**
      * Display a listing of the resource.
      *
@@ -54,9 +56,9 @@ class PostersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Poster $poster)
     {
-        return view('backeds.posters.show');
+        return view('backeds.posters.show', compact('poster'));
     }
 
     /**
@@ -65,9 +67,9 @@ class PostersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Poster $poster)
     {
-        return view('backeds.posters.create');
+        return view('backeds.posters.create', compact('poster'));
     }
 
     /**
@@ -77,9 +79,11 @@ class PostersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(PostersRequest $request, Poster $poster)
     {
-        dd($request->all());
+        $this->arrayToObject($poster,$request->all())->save();
+
+        return redirect('backed/poster/' . $poster->id);
     }
 
     /**
@@ -108,7 +112,7 @@ class PostersController extends Controller
         } catch (UploadsException $e) {
             return back()->with('error', $e->getMessage());
         }
-        
+
         $poster->save();
 
         return redirect('backed/poster');

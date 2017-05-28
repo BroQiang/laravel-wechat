@@ -36,6 +36,10 @@ class PostersRequest extends FormRequest
             'is_send'           => 'required|integer',
         ];
 
+        if ($poster = request()->route('poster')) {
+            $validateDate['name'] = 'required|max:32|unique:posters,name,' . $poster->id;
+        }
+
         return $validateDate;
     }
 }

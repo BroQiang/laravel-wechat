@@ -42,8 +42,8 @@
                                             <a class="btn btn-success btn-sm" href="{{ asset("backed/poster/{$poster->id}/upload") }}">
                                                 <i class="glyphicon glyphicon-upload"></i> 上传海报
                                             </a>
-                                            <a class="btn btn-primary btn-sm">
-                                                <i class="glyphicon glyphicon-edit"></i> 修改
+                                            <a class="btn btn-primary btn-sm" href="{{ asset("backed/poster/{$poster->id}") }}">
+                                                <i class="glyphicon glyphicon-fullscreen"></i> 详细
                                             </a>
                                             <a class="btn btn-danger btn-sm">
                                                 <i class="glyphicon glyphicon-trash"></i> 删除

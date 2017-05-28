@@ -31,8 +31,8 @@ class CreatePostersTable extends Migration
             $table->integer('nickname_font_height')->default(60)->comment('昵称高度');
             $table->integer('nickname_font_size')->default(36)->comment('昵称字体大小');
             $table->integer('nickname_font_top')->default(15)->comment('昵称文字距离上边框的高度');
-            $table->string('nickname_color', 10)->default('#ffffff')->comment('头像距离左上角的宽度');
-            $table->string('nickname_backgroup_color', 10)->default('#000000')->comment('头像距离左上角的高度');
+            $table->string('nickname_color', 10)->default('#ffffff')->comment('昵称字体颜色');
+            $table->string('nickname_backgroup_color', 10)->default('#000000')->comment('昵称背景颜色');
             $table->integer('nickname_width')->default(210)->comment('昵称距离左上角的宽度');
             $table->integer('nickname_height')->default(100)->comment('昵称距离左上角的高度');
             $table->integer('qrcode_size')->default(300)->comment('二维码的宽和高');
