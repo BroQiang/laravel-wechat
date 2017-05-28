@@ -9,12 +9,12 @@ class PosterImage
 {
     protected $message;
     protected $poster;
+    protected $mediaId;
 
     public function __construct(Poster $poster, $message = null)
     {
         $this->message = $message;
         $this->poster  = $poster;
-        $this->mediaId;
     }
 
     public function getMediaId()
@@ -34,7 +34,9 @@ class PosterImage
 
     public function __destruct()
     {
-        $this->generateMedia();
+        if (!$this->mediaId) {
+            $this->generateMedia();
+        }
     }
 
     protected function generateMedia()
