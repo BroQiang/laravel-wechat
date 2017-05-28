@@ -3,13 +3,13 @@ namespace App\Wechats\Activities\Posters;
 
 use App\Models\Poster;
 use App\Models\PosterMedias;
+use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
 class PosterImage
 {
     protected $message;
     protected $poster;
-    protected $mediaId;
 
     public function __construct(Poster $poster, $message = null)
     {
@@ -24,23 +24,22 @@ class PosterImage
             ->where('openid', $this->message->FromUserName)
             ->first()
         ) {
-            $this->mediaId = $posterMedias->media_id;
             return $posterMedias->media_id;
         }
 
         // 如果没返回，就去生成
-        return null;
-    }
-
-    public function __destruct()
-    {
-        if (!$this->mediaId) {
-            $this->generateMedia();
-        }
+        return $this->generateMedia();
     }
 
     protected function generateMedia()
     {
+
+        if ($this->checkFirstFile()) {
+            return null;
+        }
+
+        // 服务器1G的，没敢装redis，凑合用文件缓存吧
+        $this->writeFirstFile();
 
         // 上传素材到微信
         $media = app('wechat')->material->uploadImage($this->mergeImages());
@@ -53,6 +52,16 @@ class PosterImage
         ]);
 
         return $media->media_id;
+    }
+
+    protected function writeFirstFile()
+    {
+        Storage::put(storage_path('temp' . $this->poster->id . '_' . $this->message->FromUserName), time());
+    }
+
+    protected function checkFirstFile()
+    {
+        return Storage::get(storage_path('temp' . $this->poster->id . '_' . $this->message->FromUserName));
     }
 
     protected function mergeImages()

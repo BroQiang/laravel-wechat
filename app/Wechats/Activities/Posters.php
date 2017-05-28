@@ -9,8 +9,8 @@ use EasyWeChat\Message\Text;
 
 class Posters
 {
-    public $message;
-    private $poster;
+    protected $message;
+    protected $poster;
 
     public function __construct($message = null)
     {
