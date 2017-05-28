@@ -12,6 +12,6 @@ class ScanEvent
 
     public function scanHandler()
     {
-    	
+    	return (new Posters($this->message))->posterHandler();
     }
 }

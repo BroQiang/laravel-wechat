@@ -12,6 +12,6 @@ class SubscribeEvent
 
     public function subscribeHandler()
     {
-
+    	return (new Posters($this->message))->posterHandler();
     }
 }
