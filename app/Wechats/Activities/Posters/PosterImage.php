@@ -27,16 +27,10 @@ class PosterImage
             $this->mediaId = $posterMedias->media_id;
             return $posterMedias->media_id;
         }
-
+        
+        $this->generateMedia();
         // 如果没有就生成新的，为了不被微信重复发送3遍，所以先给它回复，放到析构函数中去执行
         return null;
-    }
-
-    public function __destruct()
-    {
-        if (!$this->mediaId) {
-            $this->generateMedia();
-        }
     }
 
     protected function generateMedia()
