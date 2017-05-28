@@ -2,14 +2,13 @@
 namespace App\Repositories;
 
 use App\Models\Poster;
-use App\Models\PosterMedia;
 
 class PosterRepository
 {
     public function clearCache(Poster $poster)
     {
 
-        $medias   = $poster->posterMedia()->get();
+        $medias   = $poster->posterMedias()->get();
         $material = app('wechat')->material;
 
         foreach ($medias as $media) {

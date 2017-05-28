@@ -2,7 +2,7 @@
 namespace App\Wechats\Activities\Posters;
 
 use App\Models\Poster;
-use App\Models\PosterMedia;
+use App\Models\PosterMedias;
 use Intervention\Image\Facades\Image;
 
 class PosterImage
@@ -19,11 +19,11 @@ class PosterImage
     public function getMediaId()
     {
         // 判断是否缓存了，如果缓存了，就直接返回
-        if ($posterMedia = PosterMedia::where('poster_id', $this->poster->id)
+        if ($posterMedias = PosterMedias::where('poster_id', $this->poster->id)
             ->where('openid', $this->message->FromUserName)
             ->first()
         ) {
-            return $posterMedia->media_id;
+            return $posterMedias->media_id;
         }
 
         // 如果没返回，就去生成
@@ -36,7 +36,7 @@ class PosterImage
         // 上传素材到微信
         $media = app('wechat')->material->uploadImage($this->mergeImages());
         // 将素材信息缓存到数据库
-        PosterMedia::create([
+        PosterMedias::create([
             'poster_id' => $this->poster->id,
             'openid'    => $this->message->FromUserName,
             'media_id'  => $media->media_id,
