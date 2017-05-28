@@ -28,7 +28,7 @@
                                     <tr>
                                         <td>{{ $poster->id }}</td>
                                         <td>{{ $poster->name }}</td>
-                                        <td><code>activity_push_poster_{{ $poster->id }}</code></td>
+                                        <td><code>activity____push____poster____{{ $poster->id }}</code></td>
                                         <td>
                                             @if(empty($poster->img_url))
                                                 <span class="label label-danger">未上传海报</span>
