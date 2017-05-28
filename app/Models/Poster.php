@@ -17,7 +17,7 @@ class Poster extends Model
         'is_send',
     ];
 
-    public function posterMedias()
+    public function posterMedia()
     {
         return $this->hasMany('App\Models\PosterMedias');
     }

@@ -2,7 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Poster;
-use App\Models\PosterMedias;
+use App\Models\PosterMedia;
 
 class PosterRepository
 {
@@ -17,7 +17,7 @@ class PosterRepository
             // 删除所有海报对应的缓存的素材（微信中）
             $material->delete($media->media_id);
             // 删除海报对应的缓存media_id
-            PosterMedias::delete($media->id);
+            PosterMedia::delete($media->id);
         }
     }
 
