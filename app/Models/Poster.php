@@ -19,6 +19,6 @@ class Poster extends Model
 
     public function posterMedia()
     {
-        return $this->hasMany('App\Models\PosterMedias');
+        return $this->hasMany('App\Models\PosterMedia');
     }
 }

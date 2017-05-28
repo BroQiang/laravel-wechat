@@ -9,7 +9,7 @@ class PosterRepository
     public function clearCache(Poster $poster)
     {
 
-        $medias   = $poster->posterMedias()->get();
+        $medias   = $poster->posterMedia()->get();
         $material = app('wechat')->material;
         
         foreach ($medias as $media) {
