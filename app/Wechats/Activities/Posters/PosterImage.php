@@ -32,7 +32,7 @@ class PosterImage
 
     protected function generateMedia()
     {
-
+        echo '';
         // 上传素材到微信
         $media = app('wechat')->material->uploadImage($this->mergeImages());
         // 将素材信息缓存到数据库
