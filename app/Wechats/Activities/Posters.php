@@ -27,8 +27,7 @@ class Posters
             return null;
         }
 
-        // --------------------------------------------
-        return null;
+       // 如果是扫码关注
 
         return $poster;
     }

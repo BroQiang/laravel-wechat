@@ -8,7 +8,6 @@ class Poster extends Model
 {
     protected $fillable = [
         'name',
-        'key',
         'get_message',
         'subscribe_message',
         'success_message',
@@ -17,4 +16,9 @@ class Poster extends Model
         'number',
         'is_send',
     ];
+
+    public function posterMedias()
+    {
+        return $this->hasMany('App\Models\PosterMedias');
+    }
 }

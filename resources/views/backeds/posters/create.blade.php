@@ -26,15 +26,6 @@
                                 </span>
                             @endif
                         </div>
-                        <div class="form-group {{ $errors->has('key') ? ' has-error' : '' }}">
-                            <label class="control-label">菜单中的Key</label>
-                            <input class="form-control" type="text" name="key" value="{{ old('key') }}" placeholder="此处的key要和菜单中的完全一致">
-                            @if ($errors->has('key'))
-                                <span class="help-block">
-                                    <strong>{{ $errors->first('key') }}</strong>
-                                </span>
-                            @endif
-                        </div>
                         <div class="form-group {{ $errors->has('get_message') ? ' has-error' : '' }}">
                             <label class="control-label">获取海报发送消息：</label>
                             <textarea class="form-control" rows="3" name="get_message" placeholder="用户获取到海报时候发送的消息">{{ old('get_message') }}</textarea>

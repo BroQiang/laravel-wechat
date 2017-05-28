@@ -27,7 +27,6 @@ class PostersRequest extends FormRequest
 
         $validateDate = [
             'name'              => 'required|max:32|unique:posters',
-            'key'               => 'required|max:32|unique:posters,key', // 修改的时候忽略指定ID
             'get_message'       => 'required|max:' . $messageLength,
             'subscribe_message' => 'required|max:' . $messageLength,
             'success_message'   => 'required|max:' . $messageLength,

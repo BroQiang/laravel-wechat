@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Backeds;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostersRequest;
 use App\Models\Poster;
+use App\Repositories\PosterRepository;
 use App\Uploads\Uploads;
 use App\Uploads\UploadsException;
 use Illuminate\Http\Request;
@@ -99,12 +100,15 @@ class PostersController extends Controller
 
     public function upload(Request $request, Poster $poster)
     {
+        // 长传前先清理缓存
+        (new PosterRepository())->clearCache($poster);
+
         try {
             $poster->img_url = (new Uploads('img_url', 'posters', '1'))->upload($request);
         } catch (UploadsException $e) {
             return back()->with('error', $e->getMessage());
         }
-
+        
         $poster->save();
 
         return redirect('backed/poster');

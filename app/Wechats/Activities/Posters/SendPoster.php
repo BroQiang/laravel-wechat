@@ -3,6 +3,7 @@ namespace App\Wechats\Activities\Posters;
 
 use App\Models\Poster;
 use App\Wechats\Activities\Posters\PosterImage;
+use EasyWeChat\Message\Image;
 use EasyWeChat\Message\Text;
 
 class SendPoster
@@ -20,7 +21,6 @@ class SendPoster
     {
         // 获取海报图片并发送
         $this->sendImage();
-
         // 发送海报需要发送的消息
         $message = new Text(['content' => $this->poster->get_message]);
         $this->sendStaffToWechat($message);
