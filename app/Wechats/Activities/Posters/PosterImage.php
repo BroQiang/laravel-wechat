@@ -14,6 +14,7 @@ class PosterImage
     {
         $this->message = $message;
         $this->poster  = $poster;
+        $this->mediaId;
     }
 
     public function getMediaId()
@@ -23,16 +24,21 @@ class PosterImage
             ->where('openid', $this->message->FromUserName)
             ->first()
         ) {
+            $this->mediaId = $posterMedias->media_id;
             return $posterMedias->media_id;
         }
 
-        // 如果没返回，就去生成
-        return $this->generateMedia();
+        // 如果没有就生成新的，为了不被微信重复发送3遍，所以先给它回复，放到析构函数中去执行
+        return null;
+    }
+
+    public function __destruct()
+    {
+        $this->generateMedia();
     }
 
     protected function generateMedia()
     {
-        echo '';
         // 上传素材到微信
         $media = app('wechat')->material->uploadImage($this->mergeImages());
         // 将素材信息缓存到数据库
