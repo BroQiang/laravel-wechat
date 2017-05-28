@@ -17,7 +17,6 @@ class WxmenusController extends Controller
 
     public function __construct(WxMenuRepository $wxMenu)
     {
-
         $this->wxMenu = $wxMenu;
     }
 
