@@ -14,6 +14,7 @@ class ScanEvent
 
     public function scanHandler()
     {
+    	\Illuminate\Support\Facades\Log::log('--------------------------------------------------- ClickEvent ----------------------------------------------');
     	return (new Posters($this->message))->posterHandler();
     }
 }
