@@ -29,10 +29,13 @@ class SendPoster
     protected function sendImage()
     {
         // 获取海报图片的 media_id
-        $mediaId = (new PosterImage($this->poster, $this->message))->getMediaId();
-        // 发送海报图片
-        $message = new Image(['media_id' => $mediaId]);
-        $this->sendStaffToWechat($message);
+        if($mediaId = (new PosterImage($this->poster, $this->message))->getMediaId()) {
+            // 发送海报图片
+            $message = new Image(['media_id' => $mediaId]);
+            $this->sendStaffToWechat($message);
+        }
+
+        return null;
     }
 
     protected function sendStaffToWechat($message)

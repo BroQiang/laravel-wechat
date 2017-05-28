@@ -35,7 +35,7 @@ class PosterImage
     {
 
         if ($this->checkFirstFile()) {
-            return null;
+            return false;
         }
 
         // 服务器1G的，没敢装redis，凑合用文件缓存吧
