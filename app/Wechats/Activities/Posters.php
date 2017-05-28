@@ -2,6 +2,7 @@
 namespace App\Wechats\Activities;
 
 use App\Models\Poster;
+use App\Wechats\Activities\Posters\SendPoster;
 use Carbon\Carbon;
 use EasyWeChat\Message\Text;
 
@@ -26,8 +27,8 @@ class Posters
             return null;
         }
 
-        // 获取用户信息
-        dd(app('wechat')->user->get($this->message->FromUserName));
+        // --------------------------------------------
+        return null;
 
         return $poster;
     }
@@ -50,6 +51,11 @@ class Posters
             app('wechat')->staff->message($message)->to($this->message->FromUserName)->send();
             return false;
         }
+
+        // 全部通过了就开始处理海报生成及发送了
+        (new SendPoster($this->poster,$this->message))->handler();
+
+        return true;
     }
 
     protected function getPosterByKey($key)
