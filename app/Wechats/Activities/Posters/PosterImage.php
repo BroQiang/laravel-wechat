@@ -51,6 +51,8 @@ class PosterImage
             'url'       => $media->url,
         ]);
 
+        $this->deleteFirstFile();
+
         return $media->media_id;
     }
 
@@ -62,6 +64,11 @@ class PosterImage
     protected function checkFirstFile()
     {
         return Storage::exists(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
+    }
+
+    protected function deleteFirstFile()
+    {
+        Storage::delete(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
     }
 
     protected function mergeImages()
