@@ -14,7 +14,7 @@ class SubscribeEvent
 
     public function subscribeHandler()
     {
-    	\Illuminate\Support\Facades\Log::log('--------------------------------------------------- ClickEvent ----------------------------------------------');
-    	return (new Posters($this->message))->posterHandler();
+    	\Illuminate\Support\Facades\Log::info('----------- SubscribeEvent -----------');
+        return (new Posters($this->message))->posterHandler();
     }
 }
