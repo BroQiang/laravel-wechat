@@ -9,6 +9,7 @@ class PosterImage
 {
     protected $message;
     protected $poster;
+    protected $mediaId;
 
     public function __construct(Poster $poster, $message = null)
     {
@@ -23,11 +24,19 @@ class PosterImage
             ->where('openid', $this->message->FromUserName)
             ->first()
         ) {
+            $this->mediaId = $posterMedias->media_id;
             return $posterMedias->media_id;
         }
 
         // 如果没返回，就去生成
-        return $this->generateMedia();
+        return null;
+    }
+
+    public function __destruct()
+    {
+        if (!$this->mediaId) {
+            $this->generateMedia();
+        }
     }
 
     protected function generateMedia()
