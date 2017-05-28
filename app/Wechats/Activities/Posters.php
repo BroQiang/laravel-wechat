@@ -13,11 +13,12 @@ class Posters
 
     public function __construct($message = null)
     {
-        // $this->message = $message;
-        $this->message = new \stdClass();
+        $this->message = $message;
 
-        $this->message->EventKey     = 'activity_push_poster_1';
-        $this->message->FromUserName = 'op_5k0UcEzo87Czb65UWlLj2E6aA';
+        // 测试临时数据
+        // $this->message = new \stdClass();
+        // $this->message->EventKey     = 'activity_push_poster_1';
+        // $this->message->FromUserName = 'op_5k0UcEzo87Czb65UWlLj2E6aA';
     }
 
     public function posterHandler()
