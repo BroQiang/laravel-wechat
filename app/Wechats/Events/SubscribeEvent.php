@@ -1,6 +1,8 @@
 <?php
 namespace App\Wechats\Events;
 
+use App\Wechats\Activities\Posters;
+
 class SubscribeEvent
 {
     protected $message;
