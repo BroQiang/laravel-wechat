@@ -61,7 +61,7 @@ class PosterImage
 
     protected function checkFirstFile()
     {
-        return Storage::get(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
+        return Storage::exists(storage_path('temp/' . $this->poster->id . '_' . $this->message->FromUserName));
     }
 
     protected function mergeImages()
