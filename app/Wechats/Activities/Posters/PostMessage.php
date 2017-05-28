@@ -20,7 +20,7 @@ class PostMessage
 
     public function handler($shareUserOpenid)
     {
-        $this->shareUserOpenid = $shateUserOpenid;
+        $this->shareUserOpenid = $shareUserOpenid;
 
         if ($this->shareUserOpenid == $this->message->FromUserName) {
             return null;
