@@ -2,6 +2,7 @@
 namespace App\Wechats\Activities;
 
 use App\Models\Poster;
+use App\Wechats\Activities\Posters\PostMessage;
 use App\Wechats\Activities\Posters\SendPoster;
 use Carbon\Carbon;
 use EasyWeChat\Message\Text;
