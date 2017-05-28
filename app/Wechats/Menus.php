@@ -3,11 +3,11 @@ namespace App\Wechats;
 
 class Menus
 {
-    private $menu;
+    protected $menu;
 
     public function __construct()
     {
-        $this->menu = app('wechat')->->menu;
+        $this->menu = app('wechat')->menu;
     }
 
     public function current()

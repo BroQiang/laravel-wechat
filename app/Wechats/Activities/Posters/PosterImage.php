@@ -70,7 +70,7 @@ class PosterImage
     {
         $qrcode = app('wechat')->qrcode;
         // 创建二维码
-        $sceneValue = 'activity_push_poster_' . $this->poster->id . '_' . $this->message->FromUserName;
+        $sceneValue = 'activity____push____poster____' . $this->poster->id . '____' . $this->message->FromUserName;
 
         $qrcodeImgUrl = $qrcode->url($qrcode->forever($sceneValue)->ticket);
 

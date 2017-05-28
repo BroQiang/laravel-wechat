@@ -13,12 +13,13 @@
 
 Auth::routes();
 
-Route::get('/', 'TestController@index');
+// Route::get('/', 'TestController@index');
 
 /**
  * 后台路由
  */
 Route::group(['prefix' => 'backed', 'namespace' => 'Backeds', 'middleware' => 'auth'], function () {
+    
     Route::get('/', 'IndexController@index');
 
     /**

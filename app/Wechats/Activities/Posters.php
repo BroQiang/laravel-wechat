@@ -25,7 +25,7 @@ class Posters
     public function posterHandler()
     {
 
-        $keyword = 'activity_push_poster';
+        $keyword = 'activity____push____poster';
         $len     = strlen($keyword);
 
         if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
@@ -50,7 +50,7 @@ class Posters
     protected function formatKey($key)
     {
         // 处理key，最后一个字段是主键
-        return explode('_', $key);
+        return explode('____', $key);
     }
 
     /**
