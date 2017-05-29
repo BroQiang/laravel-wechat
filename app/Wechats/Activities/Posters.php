@@ -12,7 +12,7 @@ class Posters
     protected $message;
     protected $poster;
 
-    public function __construct($message = null)
+    public function __construct($message)
     {
         $this->message = $message;
 
