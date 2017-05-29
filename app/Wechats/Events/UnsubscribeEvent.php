@@ -13,5 +13,6 @@ class UnsubscribeEvent
     public function unsubscribeHandler()
     {
     	\Illuminate\Support\Facades\Log::info('----------- UnsubscribeEvent -----------');
+    	return null;
     }
 }

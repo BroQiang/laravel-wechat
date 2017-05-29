@@ -33,6 +33,7 @@ class PostersRequest extends FormRequest
             'end_message'       => 'required|max:' . $messageLength,
             'end_time'          => 'required|max:32',
             'number'            => 'required|integer|max:99',
+            'allow_times'       => 'required|integer|between:1,99',
             'is_send'           => 'required|integer',
         ];
 

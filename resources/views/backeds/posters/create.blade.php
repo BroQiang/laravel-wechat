@@ -11,7 +11,7 @@
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
                 <div class="panel-heading">
-                    <h4>{{ isset($poster) ? '修改' . $poster->name : '创建新的'}}</h4>
+                    <h4>{{ isset($poster) ? '修改' . $poster->name : '创建新的活动'}}</h4>
                 </div>
                 <div class="panel-body">
                     <form action="{{ asset('backed/poster') }}{{ isset($poster) ? '/' . $poster->id : '' }}" method="POST">
@@ -62,6 +62,16 @@
                             @if ($errors->has('number'))
                                 <span class="help-block">
                                     <strong>{{ $errors->first('number') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="form-group {{ $errors->has('allow_times') ? ' has-error' : '' }}">
+                            <label class="control-label">可以助力的次数：</label>
+                            <input class="form-control" type="number" name="allow_times" value="{{ $poster->allow_times or old('allow_times') }}" 
+                                placeholder="需要被扫码几次达成目标,填写纯数字，如：3">
+                            @if ($errors->has('allow_times'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('allow_times') }}</strong>
                                 </span>
                             @endif
                         </div>

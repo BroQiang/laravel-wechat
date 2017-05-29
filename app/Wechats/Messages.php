@@ -6,25 +6,26 @@ class Messages
 
     public static function messageHandler($message)
     {
+        $tempMessage = '谢谢你的留言，我还太小，没学会回复呢……';
 
         switch ($message->MsgType) {
             case 'event':
                 return (new Event($message))->eventHandler();
                 break;
             case 'text':
-                return '谢谢你的留言，我还太小，没学会回复呢……';
+                return $tempMessage;
                 break;
             case 'image':
-                return '谢谢你的留言，我还太小，没学会回复呢……';
+                return $tempMessage;
                 break;
             case 'voice':
-                return '谢谢你的留言，我还太小，没学会回复呢……';
+                return $tempMessage;
                 break;
             case 'video':
-                return '谢谢你的留言，我还太小，没学会回复呢……';
+                return $tempMessage;
                 break;
             case 'location':
-                return '谢谢你的留言，我还太小，没学会回复呢……';
+                return $tempMessage;
                 break;
             case 'link':
                 return null;

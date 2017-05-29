@@ -154,6 +154,7 @@ return [
         'subscribe_message'     => '扫码消息',
         'success_message'       => '完成消息',
         'number'                => '数量',
+        'allow_times'           => '可以助力的次数',
         'is_send'               => '是否发送',
         'end_message'           => '结束消息',
         'end_time'              => '结束时间',

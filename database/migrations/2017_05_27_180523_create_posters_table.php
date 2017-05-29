@@ -21,7 +21,8 @@ class CreatePostersTable extends Migration
             $table->string('success_message', 512)->comment('达成次数的消息');
             $table->string('end_message', 512)->comment('活动结束的消息');
             $table->string('end_time', 512)->comment('活动名称');
-            $table->string('number', 512)->comment('需要完成的数量');
+            $table->integer('number')->comment('需要完成的数量');
+            $table->integer('allow_times')->default(1)->comment('同一个用户可以助力的次数');
             $table->boolean('is_send')->comment('完成后是否继续发送达成次数的消息');
             $table->string('img_url', 512)->nullable()->comment('海报图片url地址');
             $table->integer('avatar_size')->default(100)->comment('头像的宽和高');

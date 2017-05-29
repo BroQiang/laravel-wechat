@@ -14,6 +14,7 @@ class Poster extends Model
         'end_message',
         'end_time',
         'number',
+        'allow_times',
         'is_send',
     ];
 

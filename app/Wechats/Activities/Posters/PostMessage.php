@@ -26,12 +26,33 @@ class PostMessage
             return null;
         }
 
-        // 将助力信息记录
-        $this->saveShareRecord();
+        // 判断用户是否助理过，如果助力过了，就不再做处理，一个人只能助力几次，这个次数要后台设置
+        if ($this->checkAlreadyHelp()) {
+            // 将助力信息记录
+            $this->saveShareRecord();
+            // 给分享用户发送消息
+            $this->sendMesageToShareUser();
+        }
 
-        // 给分享用户发送消息
-        $this->sendMesageToShareUser();
+    }
 
+    protected function checkAlreadyHelp()
+    {
+        $times = PosterShareRecord::where('poster_id', $this->poster->id)
+            ->where('share_user_openid', $this->shareUserOpenid)
+            ->where('scan_user_openid', $this->message->FromUserName)
+            ->count();
+        // 查询出当前用户助力过的次数，如果没有助力过，返回true
+        if ($times == 0) {
+            return true;
+        }
+
+        // 判断用户助力次数是否小于允许的最大次数
+        if ($times < $this->poster->allow_times) {
+            return true;
+        }
+
+        return false;
     }
 
     protected function saveShareRecord()
@@ -46,7 +67,8 @@ class PostMessage
     protected function sendMesageToShareUser()
     {
 
-        $shareQuantity = PosterShareRecord::where('share_user_openid', $this->shareUserOpenid)->count();
+        $shareQuantity = PosterShareRecord::where('share_user_openid', $this->shareUserOpenid)->
+            where('poster_id', $this->poster->id)->count();
 
         switch ($shareQuantity <=> $this->poster->number) {
             case 0:
