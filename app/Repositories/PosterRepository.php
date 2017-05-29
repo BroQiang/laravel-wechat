@@ -2,6 +2,7 @@
 namespace App\Repositories;
 
 use App\Models\Poster;
+use App\Models\PosterShareRecord;
 
 class PosterRepository
 {
