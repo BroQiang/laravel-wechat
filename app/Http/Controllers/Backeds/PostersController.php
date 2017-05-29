@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backeds;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\PostersRequest;
+use App\Http\Requests\PostersSettingRequest;
 use App\Models\Poster;
 use App\Repositories\CommonRepository;
 use App\Repositories\PosterRepository;
@@ -81,7 +82,7 @@ class PostersController extends Controller
      */
     public function update(PostersRequest $request, Poster $poster)
     {
-        $this->arrayToObject($poster,$request->all())->save();
+        $this->arrayToObject($poster, $request->all())->save();
 
         return redirect('backed/poster/' . $poster->id);
     }
@@ -121,5 +122,16 @@ class PostersController extends Controller
     public function preview(Request $request, Poster $poster)
     {
         return response()->file(storage_path('app/' . $poster->img_url));
+    }
+
+    public function settingShow(Poster $poster)
+    {
+        return view('backeds.posters.setting', compact('poster'));
+    }
+
+    public function setting(PostersSettingRequest $request, Poster $poster)
+    {
+        $this->arrayToObject($poster, $request->all())->save();
+        return redirect('backed/poster/' . $poster->id);
     }
 }

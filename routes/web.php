@@ -55,6 +55,8 @@ Route::group(['prefix' => 'backed', 'namespace' => 'Backeds', 'middleware' => 'a
     Route::post('poster/{poster}/upload', 'PostersController@upload'); // 保存修改海报
     Route::get('poster/{poster}/delete', 'PostersController@destroy'); // 删除海报
     Route::get('poster/{poster}/preview', 'PostersController@preview'); // 预览海报图片
+    Route::get('poster/{poster}/setting', 'PostersController@settingShow'); // 海报图片设置
+    Route::post('poster/{poster}/setting', 'PostersController@setting'); // 海报图片保存
 
 });
 

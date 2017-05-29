@@ -14,7 +14,7 @@ class Uploads
 
     protected $extensions = ['png', 'jpg'];
 
-    protected $maxSize = 2000000;
+    protected $maxSize = 1000000;
 
     public function __construct($uploadFile = null, $savePath = null, $saveName = null)
     {

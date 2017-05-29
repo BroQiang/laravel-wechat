@@ -11,52 +11,49 @@
                     <a class="btn btn-md btn-success" href="{{ asset('backed/poster/create') }}">
                         <i class="glyphicon glyphicon-plus mr-2"></i>创建
                     </a>
-                    <hr>
-                    <div class="table-responsive">
-                        <table class="table table-hover table-striped">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>活动名称</th>
-                                    <th>Key</th>
-                                    <th>是否上传图片</th>
-                                    <th>操作</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($posters as $poster)
-                                    <tr>
-                                        <td>{{ $poster->id }}</td>
-                                        <td>{{ $poster->name }}</td>
-                                        <td><code>activity____push____poster____{{ $poster->id }}</code></td>
-                                        <td>
-                                            @if(empty($poster->img_url))
-                                                <span class="label label-danger">未上传海报</span>
-                                            @else
-                                                <a class="btn btn-info btn-sm" href="{{ asset("backed/poster/{$poster->id}/preview") }}" target="_blank">
-                                                    <i class="glyphicon glyphicon-picture"></i> 海报图片预览
-                                                </a>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <a class="btn btn-success btn-sm" href="{{ asset("backed/poster/{$poster->id}/upload") }}">
-                                                <i class="glyphicon glyphicon-upload"></i> 上传海报
-                                            </a>
-                                            <a class="btn btn-primary btn-sm" href="{{ asset("backed/poster/{$poster->id}") }}">
-                                                <i class="glyphicon glyphicon-fullscreen"></i> 详细
-                                            </a>
-                                            <a class="btn btn-danger btn-sm">
-                                                <i class="glyphicon glyphicon-trash"></i> 删除
-                                            </a>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
+    @foreach($posters as $poster)
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        {{ $poster->name }}
+                    </div>
+                    <div class="panel-body">
+                        <p>添加完海报不要忘记上传海报图片，每次上传新的海报都会将之前缓存的数据清楚</p>
+                        <p>不要手动清除数据库的缓存和微信的缓存，如果必须要手动清除，请保证两边对应的数据全部清除</p>
+                    </div>
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            Key ： <code>activity____push____poster____{{ $poster->id }}</code>
+                        </li>
+                        <li class="list-group-item">
+                            @if(empty($poster->img_url))
+                                <span class="label label-danger">未上传海报</span>
+                            @else
+                                <a class="btn btn-info btn-sm" href="{{ asset("backed/poster/{$poster->id}/preview") }}" target="_blank">
+                                    <i class="glyphicon glyphicon-picture"></i> 海报图片预览
+                                </a>
+                            @endif
+                        </li>
+                        <li class="list-group-item">
+                            <a class="btn btn-success btn-sm" href="{{ asset("backed/poster/{$poster->id}/upload") }}">
+                                <i class="glyphicon glyphicon-upload"></i> 上传海报
+                            </a>
+                            <a class="btn btn-primary btn-sm" href="{{ asset("backed/poster/{$poster->id}") }}">
+                                <i class="glyphicon glyphicon-fullscreen"></i> 详细
+                            </a>
+                            <a class="btn btn-danger btn-sm" onclick="alert('这个逻辑不好处理，没确定好，暂时还没有做');">
+                                <i class="glyphicon glyphicon-trash"></i> 删除
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    @endforeach
 </div>
 @endsection

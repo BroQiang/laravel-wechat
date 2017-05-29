@@ -57,7 +57,7 @@
                         </div>
                         <div class="form-group {{ $errors->has('number') ? ' has-error' : '' }}">
                             <label class="control-label">需要完成的数量：</label>
-                            <input class="form-control" type="text" name="number" value="{{ $poster->number or old('number') }}" 
+                            <input class="form-control" type="number" name="number" value="{{ $poster->number or old('number') }}" 
                                 placeholder="需要被扫码几次达成目标,填写纯数字，如：3">
                             @if ($errors->has('number'))
                                 <span class="help-block">
