@@ -99,7 +99,9 @@ class PostMessage
     {
         $freeNumber = $this->poster->number - $shareQuantity;
 
-        $message = str_replace('{!-nickname-!}', $this->message->FromUserName, $message);
+        $toUserNickName = app('wechat')->user->get($this->message->FromUserName)->nickname;
+
+        $message = str_replace('{!-nickname-!}', $toUserNickName, $message);
         $message = str_replace('{!-quantity-!}', $freeNumber > 0 ? $freeNumber : 0, $message);
 
         $this->sendMessageToShareUser($message);
