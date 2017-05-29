@@ -64,7 +64,7 @@
                         同一个用户可以助力的次数： <code>{{ $poster->allow_times }}</code>
                     </li>
                     <li class="list-group-item">
-                        完成后是否继续发送达成次数的消息： <code>{{ $poster->get_message ? '是' : '否' }}</code>
+                        完成后是否继续发送达成次数的消息： <code>{{ $poster->is_send ? '是' : '否' }}</code>
                     </li>
                     <li class="list-group-item">
                         海报图片url地址： <code>{{ $poster->img_url }}</code>
