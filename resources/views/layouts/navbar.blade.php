@@ -64,8 +64,7 @@
 
                         <ul class="dropdown-menu" role="menu">
                             
-                            <li><a href="">重置密码</a></li>
-                            <li><a href="">重置密码</a></li>
+                            <li><a href="{{ route('password.request') }}">重置密码</a></li>
 
                             <li role="separator" class="divider"></li>
 
