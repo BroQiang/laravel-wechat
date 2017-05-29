@@ -13,8 +13,6 @@
 
 Auth::routes();
 
-// Route::get('/', 'TestController@index');
-
 /**
  * 后台路由
  */
