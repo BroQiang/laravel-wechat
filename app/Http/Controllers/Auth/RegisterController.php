@@ -39,6 +39,15 @@ class RegisterController extends Controller
         $this->middleware('guest');
     }
 
+    public function showRegistrationForm()
+    {
+        if(!config('app.is_register')) {
+            return back()->with('error','管理员没有开启注册功能');
+        }
+
+        return view('auth.register');
+    }
+
     /**
      * Get a validator for an incoming registration request.
      *

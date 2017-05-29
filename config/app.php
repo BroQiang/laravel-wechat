@@ -14,6 +14,11 @@ return [
 
     'name'            => env('APP_NAME', 'Wechat'),
 
+    // 默认管理员的设置
+    'admin_email'     => env('ADMIN_EMAIL', 'broqiang@qq.com'),
+    'admin_name'      => env('ADMIN_NAME', 'Admin'),
+    'is_register'     => env('IS_REGISTER', false),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

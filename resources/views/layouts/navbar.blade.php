@@ -55,7 +55,9 @@
                 <!-- Authentication Links -->
                 @if (Auth::guest())
                     <li><a href="{{ route('login') }}">登录</a></li>
-                    <li><a href="{{ route('register') }}">注册</a></li>
+                    @if(config('app.is_register'))
+                        <li><a href="{{ route('register') }}">注册</a></li>
+                    @endif
                 @else
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
