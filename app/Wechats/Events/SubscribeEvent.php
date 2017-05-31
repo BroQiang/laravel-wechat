@@ -14,7 +14,7 @@ class SubscribeEvent
 
     public function subscribeHandler()
     {
-    	\Illuminate\Support\Facades\Log::info('----------- ClickEvent -- $this->message->FromUserName -----------');
+    	\Illuminate\Support\Facades\Log::info('----------- ClickEvent -- '.$this->message->FromUserName.' -----------');
         return (new Posters($this->message))->posterHandler();
     }
 }
