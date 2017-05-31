@@ -29,6 +29,7 @@ class Posters
         $len     = strlen($keyword);
 
         if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
+            \Illuminate\Support\Facades\Log::info('----------- EventKey -- '.$this->message->EventKey.' -----------');
             return null;
         }
 
