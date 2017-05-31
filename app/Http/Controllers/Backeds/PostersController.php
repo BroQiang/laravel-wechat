@@ -131,6 +131,9 @@ class PostersController extends Controller
 
     public function setting(PostersSettingRequest $request, Poster $poster)
     {
+        // 修改保存前也清理一次缓存
+        (new PosterRepository())->clearCache($poster);
+
         $this->arrayToObject($poster, $request->all())->save();
         return redirect('backed/poster/' . $poster->id);
     }
