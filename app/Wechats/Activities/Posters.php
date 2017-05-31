@@ -50,10 +50,10 @@ class Posters
 
     protected function checkEventKey()
     {
-        $keyword = 'qrscene_activity____push____poster';
+        $keyword = 'activity____push____poster';
 
         if ($this->message->Event == 'SCAN') {
-            $keyword = 'activity____push____poster';
+            $keyword = 'qrscene_activity____push____poster';
         }
 
         $len = strlen($keyword);
