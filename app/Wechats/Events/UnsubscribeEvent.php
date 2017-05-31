@@ -12,7 +12,7 @@ class UnsubscribeEvent
 
     public function unsubscribeHandler()
     {
-    	\Illuminate\Support\Facades\Log::info('----------- UnsubscribeEvent -----------');
+    	\Illuminate\Support\Facades\Log::info('----------- ClickEvent -- $this->message->FromUserName -----------');
     	return null;
     }
 }
