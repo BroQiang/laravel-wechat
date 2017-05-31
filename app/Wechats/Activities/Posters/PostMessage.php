@@ -50,7 +50,7 @@ class PostMessage
     protected function checkAlreadyHelp()
     {
         $times = PosterShareRecord::where('poster_id', $this->poster->id)
-            ->where('share_user_openid', $this->shareUserOpenid)
+            // ->where('share_user_openid', $this->shareUserOpenid)
             ->where('scan_user_openid', $this->message->FromUserName)
             ->count();
         // 查询出当前用户助力过的次数，如果没有助力过，返回true
