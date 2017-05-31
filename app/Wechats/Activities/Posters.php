@@ -51,11 +51,11 @@ class Posters
     protected function checkEventKey()
     {
 
-        if ($this->Event == 'subscribe') {
+        if ($this->message->Event == 'subscribe') {
             $keyword = 'qrscene_activity____push____poster';
         }
 
-        if ($this->Event == 'SCAN') {
+        if ($this->message->Event == 'SCAN') {
             $keyword = 'activity____push____poster';
         }
 
