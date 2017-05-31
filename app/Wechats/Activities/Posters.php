@@ -59,7 +59,7 @@ class Posters
             $keyword = 'activity____push____poster';
         }
 
-        if (!$key) {
+        if (!$keyword) {
             return false;
         }
 
