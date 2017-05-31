@@ -52,7 +52,7 @@ class Posters
     {
         $keyword = 'activity____push____poster';
 
-        if ($this->message->Event == 'SCAN') {
+        if ($this->message->Event == 'subscribe') {
             $keyword = 'qrscene_activity____push____poster';
         }
 
