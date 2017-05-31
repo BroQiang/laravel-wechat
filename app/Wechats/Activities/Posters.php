@@ -34,15 +34,16 @@ class Posters
 
         $keyArray = $this->formatKey($this->message->EventKey);
 
+        // 如果是扫码关注,判断Key，处理扫码关注的逻辑
+        if (isset($keyArray[4])) {
+            (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
+        }
+        
         // 海报信息处理，获取到有效的海报信息，就发送海报
         if (!$this->posterProcess($keyArray[3])) {
             return null;
         }
 
-        // 如果是扫码关注,判断Key，处理扫码关注的逻辑
-        if (isset($keyArray[4])) {
-            (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
-        }
 
         return null;
     }
