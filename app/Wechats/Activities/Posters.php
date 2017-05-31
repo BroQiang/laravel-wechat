@@ -50,6 +50,7 @@ class Posters
 
     protected function checkEventKey()
     {
+        $keyword = null;
 
         if ($this->message->Event == 'subscribe') {
             $keyword = 'qrscene_activity____push____poster';
