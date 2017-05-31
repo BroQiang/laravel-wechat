@@ -31,7 +31,13 @@ class Posters
 
         $keyArray = $this->formatKey($this->message->EventKey);
 
+        // 获取海报信息
         if (!$this->getPosterByKey($keyArray[3])) {
+            return null;
+        }
+
+        // 检测缓存，防止发送多次
+        if ($this->checkFirstFile()) {
             return null;
         }
 
@@ -46,6 +52,11 @@ class Posters
         }
 
         return null;
+    }
+
+    protected function checkFirstFile()
+    {
+        return Storage::exists('temp/' . $this->poster->id . '_' . $this->message->FromUserName);
     }
 
     protected function checkEventKey()

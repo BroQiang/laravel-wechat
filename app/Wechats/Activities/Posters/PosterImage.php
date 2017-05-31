@@ -34,10 +34,6 @@ class PosterImage
     protected function generateMedia()
     {
 
-        if ($this->checkFirstFile()) {
-            return false;
-        }
-
         // 服务器1G的，没敢装redis，凑合用文件缓存吧
         $this->writeFirstFile();
 
@@ -59,11 +55,6 @@ class PosterImage
     protected function writeFirstFile()
     {
         Storage::put('temp/' . $this->poster->id . '_' . $this->message->FromUserName, time());
-    }
-
-    protected function checkFirstFile()
-    {
-        return Storage::exists('temp/' . $this->poster->id . '_' . $this->message->FromUserName);
     }
 
     protected function deleteFirstFile()
