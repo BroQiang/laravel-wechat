@@ -50,18 +50,10 @@ class Posters
 
     protected function checkEventKey()
     {
-        $keyword = null;
-
-        if ($this->message->Event == 'subscribe') {
-            $keyword = 'qrscene_activity____push____poster';
-        }
+        $keyword = 'qrscene_activity____push____poster';
 
         if ($this->message->Event == 'SCAN') {
             $keyword = 'activity____push____poster';
-        }
-
-        if (!$keyword) {
-            return false;
         }
 
         $len = strlen($keyword);
