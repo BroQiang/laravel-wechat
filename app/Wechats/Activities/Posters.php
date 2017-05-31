@@ -25,11 +25,7 @@ class Posters
     public function posterHandler()
     {
 
-        $keyword = 'activity____push____poster';
-        $len     = strlen($keyword);
-
-        if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
-            \Illuminate\Support\Facades\Log::info('----------- EventKey -- '.$this->message->EventKey.' -----------');
+        if (!$this->checkEventKey()) {
             return null;
         }
 
@@ -43,14 +39,30 @@ class Posters
         if (isset($keyArray[4])) {
             (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
         }
-        
+
         // 海报信息处理，获取到有效的海报信息，就发送海报
         if (!$this->posterProcess()) {
             return null;
         }
 
-
         return null;
+    }
+
+    protected function checkEventKey()
+    {
+        $keyword = 'activity____push____poster';
+        if(strpos($this->message->EventKey,'qrscene')) {
+            $keyword = 'qrscene_activity____push____poster';
+        }
+        
+        $len = strlen($keyword);
+
+        if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
+            \Illuminate\Support\Facades\Log::info('----------- EventKey -- ' . $this->message->EventKey . ' -----------');
+            return false;
+        }
+
+        return true;
     }
 
     protected function formatKey($key)
