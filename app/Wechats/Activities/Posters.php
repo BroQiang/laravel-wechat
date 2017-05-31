@@ -6,6 +6,7 @@ use App\Wechats\Activities\Posters\PostMessage;
 use App\Wechats\Activities\Posters\SendPoster;
 use Carbon\Carbon;
 use EasyWeChat\Message\Text;
+use Illuminate\Support\Facades\Storage;
 
 class Posters
 {
