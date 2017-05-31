@@ -45,15 +45,22 @@ class Posters
             (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
         }
 
-
         return null;
     }
 
     protected function checkEventKey()
     {
-        $keyword = 'activity____push____poster';
-        if(strpos($this->message->EventKey,'qrscene')) {
+
+        if ($this->Event == 'subscribe') {
             $keyword = 'qrscene_activity____push____poster';
+        }
+
+        if ($this->Event == 'SCAN') {
+            $keyword = 'activity____push____poster';
+        }
+
+        if (!$key) {
+            return false;
         }
 
         $len = strlen($keyword);
