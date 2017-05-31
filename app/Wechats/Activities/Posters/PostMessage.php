@@ -36,6 +36,7 @@ class PostMessage
             return null;
         }
 
+        // 发送已经助力过的消息
         $this->sendAlreadyHelpMessageToFromUser();
 
     }
