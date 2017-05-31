@@ -35,15 +35,16 @@ class Posters
             return null;
         }
 
+        // 海报信息处理，获取到有效的海报信息，就发送海报
+        if (!$this->posterProcess()) {
+            return null;
+        }
+        
         // 如果是扫码关注,判断Key，处理扫码关注的逻辑
         if (isset($keyArray[4])) {
             (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
         }
 
-        // 海报信息处理，获取到有效的海报信息，就发送海报
-        if (!$this->posterProcess()) {
-            return null;
-        }
 
         return null;
     }
@@ -54,7 +55,7 @@ class Posters
         if(strpos($this->message->EventKey,'qrscene')) {
             $keyword = 'qrscene_activity____push____poster';
         }
-        
+
         $len = strlen($keyword);
 
         if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
