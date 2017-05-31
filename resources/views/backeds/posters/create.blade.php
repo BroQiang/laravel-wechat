@@ -55,6 +55,16 @@
                                 </span>
                             @endif
                         </div>
+                        <div class="form-group {{ $errors->has('already_help_message') ? ' has-error' : '' }}">
+                            <label class="control-label">已经助力过的消息：</label>
+                            <textarea class="form-control" rows="3" name="already_help_message" 
+                                >{{ $poster->already_help_message or old('already_help_message') }}</textarea>
+                            @if ($errors->has('already_help_message'))
+                                <span class="help-block">
+                                    <strong>{{ $errors->first('already_help_message') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                         <div class="form-group {{ $errors->has('number') ? ' has-error' : '' }}">
                             <label class="control-label">需要完成的数量：</label>
                             <input class="form-control" type="number" name="number" value="{{ $poster->number or old('number') }}" 

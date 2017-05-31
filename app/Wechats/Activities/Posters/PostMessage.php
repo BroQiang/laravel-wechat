@@ -32,8 +32,18 @@ class PostMessage
             $this->saveShareRecord();
             // 给分享用户发送消息
             $this->sendMesageToShareUser();
+
+            return null;
         }
 
+        $this->sendAlreadyHelpMessageToFromUser();
+
+    }
+
+    protected function sendAlreadyHelpMessageToFromUser()
+    {
+        $message = new Text(['content' => $this->poster->already_help_message]);
+        app('wechat')->staff->message($message)->to($this->message->FromUserName)->send();
     }
 
     protected function checkAlreadyHelp()

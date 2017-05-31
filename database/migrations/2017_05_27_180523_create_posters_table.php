@@ -20,6 +20,7 @@ class CreatePostersTable extends Migration
             $table->string('subscribe_message', 512)->comment('发送二维码被扫描的消息');
             $table->string('success_message', 512)->comment('达成次数的消息');
             $table->string('end_message', 512)->comment('活动结束的消息');
+            $table->string('already_help_message', 512)->comment('已经助力过的消息');
             $table->string('end_time', 512)->comment('活动名称');
             $table->integer('number')->comment('需要完成的数量');
             $table->integer('allow_times')->default(1)->comment('同一个用户可以助力的次数');

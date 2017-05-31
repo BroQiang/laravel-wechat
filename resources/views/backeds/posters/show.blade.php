@@ -58,6 +58,13 @@
                         </p>
                     </li>
                     <li class="list-group-item">
+                        已经助力过的消息： 
+                        <hr>
+                        <p>
+                            {!! nl2br($poster->already_help_message) !!}
+                        </p>
+                    </li>
+                    <li class="list-group-item">
                         需要完成的数量： <code>{{ $poster->number }}</code>
                     </li>
                     <li class="list-group-item">

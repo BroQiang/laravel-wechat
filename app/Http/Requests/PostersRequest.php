@@ -26,15 +26,16 @@ class PostersRequest extends FormRequest
         $messageLength = 512;
 
         $validateDate = [
-            'name'              => 'required|max:32|unique:posters',
-            'get_message'       => 'required|max:' . $messageLength,
-            'subscribe_message' => 'required|max:' . $messageLength,
-            'success_message'   => 'required|max:' . $messageLength,
-            'end_message'       => 'required|max:' . $messageLength,
-            'end_time'          => 'required|max:32',
-            'number'            => 'required|integer|max:99',
-            'allow_times'       => 'required|integer|between:1,99',
-            'is_send'           => 'required|integer',
+            'name'                 => 'required|max:32|unique:posters',
+            'get_message'          => 'required|max:' . $messageLength,
+            'subscribe_message'    => 'required|max:' . $messageLength,
+            'success_message'      => 'required|max:' . $messageLength,
+            'end_message'          => 'required|max:' . $messageLength,
+            'already_help_message' => 'required|max:' . $messageLength,
+            'end_time'             => 'required|max:32',
+            'number'               => 'required|integer|max:99',
+            'allow_times'          => 'required|integer|between:1,99',
+            'is_send'              => 'required|integer',
         ];
 
         if ($poster = request()->route('poster')) {

@@ -158,6 +158,7 @@ return [
         'is_send'               => '是否发送',
         'end_message'           => '结束消息',
         'end_time'              => '结束时间',
+        'already_help_message'  => '已经助力过的消息',
     ],
 
 ];
