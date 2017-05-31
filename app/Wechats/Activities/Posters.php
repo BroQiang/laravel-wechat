@@ -39,7 +39,7 @@ class Posters
         if (!$this->posterProcess()) {
             return null;
         }
-        
+
         // 如果是扫码关注,判断Key，处理扫码关注的逻辑
         if (isset($keyArray[4])) {
             (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
@@ -59,6 +59,7 @@ class Posters
         $len = strlen($keyword);
 
         if (strncmp($keyword, substr($this->message->EventKey, 0, $len), $len) != 0) {
+            \Illuminate\Support\Facades\Log::info('----------- Keyword -- ' . $keyword . ' -----------');
             \Illuminate\Support\Facades\Log::info('----------- EventKey -- ' . $this->message->EventKey . ' -----------');
             return false;
         }
