@@ -35,13 +35,17 @@ class Posters
 
         $keyArray = $this->formatKey($this->message->EventKey);
 
+        if (!$this->getPosterByKey($keyArray[3])) {
+            return null;
+        }
+
         // 如果是扫码关注,判断Key，处理扫码关注的逻辑
         if (isset($keyArray[4])) {
             (new PostMessage($this->poster, $this->message))->handler($keyArray[4]);
         }
         
         // 海报信息处理，获取到有效的海报信息，就发送海报
-        if (!$this->posterProcess($keyArray[3])) {
+        if (!$this->posterProcess()) {
             return null;
         }
 
@@ -62,11 +66,8 @@ class Posters
      *
      * @return [type] [description]
      */
-    protected function posterProcess($id)
+    protected function posterProcess()
     {
-        if (!$this->getPosterByKey($id)) {
-            return false;
-        }
         // 如果活动已经结束，发送活动结束的消息，并返回false
         if (Carbon::now()->gt(Carbon::parse($this->poster->end_time))) {
             $message = new Text(['content' => $this->poster->end_message]);
