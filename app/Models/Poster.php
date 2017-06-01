@@ -16,6 +16,7 @@ class Poster extends Model
         'number',
         'allow_times',
         'is_send',
+        'already_help_message',
     ];
 
     public function posterMedias()
