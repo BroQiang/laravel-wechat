@@ -106,7 +106,7 @@ class PosterImage
 
         // 创建一个昵称生成的图片
         $img = Image::canvas($this->poster->nickname_font_width + 10,
-            $this->poster->nickname_font_height, $this->poster->nickname_backgroup_color);
+            $this->poster->nickname_font_height);
         $img->text($str, 10, $this->poster->nickname_font_top, function ($font) {
             $font->file(storage_path('fonts/simhei.ttf'));
             $font->size($this->poster->nickname_font_size);
