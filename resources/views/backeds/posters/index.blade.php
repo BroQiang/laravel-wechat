@@ -46,9 +46,9 @@
                             <a class="btn btn-primary btn-sm" href="{{ asset("backed/poster/{$poster->id}") }}">
                                 <i class="glyphicon glyphicon-fullscreen"></i> 详细
                             </a>
-                            <a class="btn btn-danger btn-sm" onclick="alert('这个逻辑不好处理，没确定好，暂时还没有做');">
+                            {{-- <a class="btn btn-danger btn-sm" onclick="alert('这个逻辑不好处理，没确定好，暂时还没有做');">
                                 <i class="glyphicon glyphicon-trash"></i> 删除
-                            </a>
+                            </a> --}}
                         </li>
                     </ul>
                 </div>
