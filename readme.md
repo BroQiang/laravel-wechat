@@ -12,7 +12,7 @@
 
 - 前台二维码：（这个是微信开发者账号，最多只能关注100个人，请测试后自动取消关注）
 
-    ![qrcode](https://github.com/BroQiang/laravel-wechat/blob/master/qecode.png)
+    ![qrcode](https://github.com/BroQiang/laravel-wechat/blob/master/qrcode.png)
 
 ## 环境
 
