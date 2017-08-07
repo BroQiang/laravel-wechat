@@ -1,5 +1,19 @@
 # 基于 Laravel 5.4 和 EasyWechat 微信开发
 
+
+## 测试环境
+
+新添加了测试环境，服务器是一台阿里云最便宜的小水管，速度会不够快，微信端因为没有服务号，所以使用的是开发者账号。
+
+
+- 后台: [http://laravel-wechat.broqiang.com](http://laravel-wechat.broqiang.com)
+
+    测试用户名/密码： broqiang@qq.com/123@123
+
+- 前台二维码：（这个是微信开发者账号，最多只能关注100个人，请测试后自动取消关注）
+
+    ![qrcode](https://github.com/BroQiang/laravel-wechat/blob/master/qecode.png)
+
 ## 环境
 
 #### 系统
@@ -92,6 +106,9 @@ $ php artisan serve
 现在功能较少，等域名备案下来后会陆续添加新的功能
 
 ## 更新日志
+
+#### 2017-08-07
+配置了个测试环境，后台和微信开发公众号
 
 #### 2017-06-09
 
