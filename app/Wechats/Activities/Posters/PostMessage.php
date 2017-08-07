@@ -50,7 +50,7 @@ class PostMessage
     protected function checkAlreadyHelp()
     {
         $times = PosterShareRecord::where('poster_id', $this->poster->id)
-            // ->where('share_user_openid', $this->shareUserOpenid)
+        // ->where('share_user_openid', $this->shareUserOpenid)
             ->where('scan_user_openid', $this->message->FromUserName)
             ->count();
         // 查询出当前用户助力过的次数，如果没有助力过，返回true
@@ -108,14 +108,28 @@ class PostMessage
 
     protected function sendHelpMessageToShareUser($message, $shareQuantity)
     {
-        $freeNumber = $this->poster->number - $shareQuantity;
+        $this->sendMessageToShareUser($this->replaceMessage($message, $shareQuantity));
+    }
 
+    /**
+     * 处理消息替换
+     * 待替换的消息根据后台配置的关键字进行替换
+     * @param  [type] $message [description]
+     * @param  [type] $shareQuantity [description]
+     * @return [type] [description]
+     */
+    protected function replaceMessage($message, $shareQuantity)
+    {
+        $freeNumber     = $this->poster->number - $shareQuantity;
         $toUserNickName = app('wechat')->user->get($this->message->FromUserName)->nickname;
+        // 第几位助力，发送顺序
+        $message        = str_replace('{!-sequence-!}', $shareQuantity + 1, $message);
+        // 替换助力人的微信昵称
+        $message        = str_replace('{!-nickname-!}', $toUserNickName, $message);
+        // 已经助力的数量
+        $message        = str_replace('{!-quantity-!}', $freeNumber > 0 ? $freeNumber : 0, $message);
 
-        $message = str_replace('{!-nickname-!}', $toUserNickName, $message);
-        $message = str_replace('{!-quantity-!}', $freeNumber > 0 ? $freeNumber : 0, $message);
-
-        $this->sendMessageToShareUser($message);
+        return $message;
     }
 
     protected function sendMessageToShareUser($message)
